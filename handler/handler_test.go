@@ -23,7 +23,7 @@ func TestTimeHandler(t *testing.T) {
 	handler.ServeHTTP(rr, req)
 
 	var responseBody SampleResponse
-	json.Unmarshal([]byte(rr.Body.String()), &responseBody)
+	_ = json.Unmarshal([]byte(rr.Body.String()), &responseBody)
 
 	assert.GreaterOrEqual(t, timeNow, responseBody.Time)
 	assert.Equal(t, http.StatusOK, rr.Code, "Status code didn't match")
