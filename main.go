@@ -10,5 +10,5 @@ func main() {
 	th := handler.TimeHandler()
 	mux.Handle("/time", th)
 
-	http.ListenAndServe("0.0.0.0:8080", mux)
+	_ = http.ListenAndServe("0.0.0.0:8080", mux)
 }

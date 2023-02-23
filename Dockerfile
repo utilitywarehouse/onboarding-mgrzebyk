@@ -1,4 +1,4 @@
-FROM golang:1.20.1-alpine as builder
+FROM golang:1.19-alpine3.17 as builder
 RUN apk add --no-cache git
 
 WORKDIR /tmp/app
@@ -14,10 +14,10 @@ RUN go build -o ./out/app .
 
 
 
-FROM alpine:latest 
+FROM alpine:3.17 
 RUN apk add ca-certificates
 
-COPY --from=build_base /tmp/app/out/app /app
+COPY --from=builder /tmp/app/out/app /app
 
 EXPOSE 8080
 

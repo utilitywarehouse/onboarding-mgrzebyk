@@ -16,7 +16,7 @@ func TimeHandler() http.Handler {
 		response := SampleResponse{
 			Time: time.Now().Unix(),
 		}
-		json.NewEncoder(w).Encode(response)
+		_ = json.NewEncoder(w).Encode(response)
 	}
 	return http.HandlerFunc(fn)
 }
