@@ -17,7 +17,7 @@ RUN go build -o ./out/app .
 FROM alpine:3.17 
 RUN apk add ca-certificates
 
-COPY --from=builder /out/app /app
+COPY --from=builder /tmp/app/out/app /app
 
 EXPOSE 8080
 
